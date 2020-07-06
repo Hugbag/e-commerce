@@ -2,22 +2,23 @@ on:
   push:
     branches-ignore:
       - master
-
 jobs:
   unit-tests:
     name: Unit tests
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./frontend
     steps:
       - name: "Checkout"
-        working-directory: ./frontend
         uses: actions/checkout@master
-      - uses: actions/setup-node@v1
+      - name: "Setup node"
+        uses: actions/setup-node@v1
         with:
           node-version: "10.16.0"
           registry-url: https://npm.pkg.github.com/
       - name: "Install dependencies"
-        working-directory: ./frontend
+        working-directory: ${{env.working-directory}}
         run: yarn install --verbose
-      - name: "Unit tests"
-        working-directory: ./frontend
+      - name: "Run unit tests"
+        working-directory: ${{env.working-directory}}
         run: CI=true yarn test
