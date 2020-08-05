@@ -92,6 +92,18 @@ class Home extends React.Component {
                         </StyledListLeft>
                     </AboutContainer>
                 </section>
+                <section>
+                    <div/>
+                    <SectionHeadline>Dla biznesu</SectionHeadline>
+                    <AboutContainer>
+                        <img src='https://hugbag.pl/assets/dist/img/homepage/2b.jpg'/>
+                        <StyledListLeft>
+                            <li>dlaczego HUGBAG?</li>
+                            <li>personalizacja</li>
+                            <li>zaufali nam</li>
+                        </StyledListLeft>
+                    </AboutContainer>
+                </section>
         </MainContainer>
         )
     }
