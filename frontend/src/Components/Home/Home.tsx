@@ -115,7 +115,34 @@ const FooterLink = styled.h1`
 
 
 class Home extends React.Component {
+    state = {
+        img: 'https://hugbag.pl/assets/dist/img/categories/case.jpg',
+    };
+
+    changeImage(name) {
+        switch (name) {
+            case "wallets":
+                this.setState({ img: 'https://hugbag.pl/assets/dist/img/categories/wallets.jpg', });
+                break;
+            case "bags":
+                this.setState({ img: 'https://hugbag.pl/assets/dist/img/categories/bags.jpg', });
+                break;
+            case "pendants":
+                this.setState({ img: 'https://hugbag.pl/assets/dist/img/categories/pendants.jpg', });
+                break;
+            case "notes":
+                this.setState({ img: 'https://hugbag.pl/assets/dist/img/categories/notes.jpg', });
+                break;
+            case "accessories":
+                this.setState({ img: 'https://hugbag.pl/assets/dist/img/categories/accessories.jpg', });
+                break;
+            default:
+                this.setState({ img: 'https://hugbag.pl/assets/dist/img/categories/case.jpg', });
+        }
+    }
     render() {
+        const { img } = this.state;
+
         return (
             <MainContainer>
             <Carousel/>
@@ -126,15 +153,15 @@ class Home extends React.Component {
                         <Col>
                             <StyledListRight>
                                 <li><StyledLink href='#'>etui</StyledLink></li>
-                                <li><StyledLink href='#'>portfele</StyledLink></li>
-                                <li><StyledLink href='#'>torby</StyledLink></li>
-                                <li><StyledLink href='#'>breloki</StyledLink></li>
-                                <li><StyledLink href='#'>notesy</StyledLink></li>
-                                <li><StyledLink href='#'>akcesoria</StyledLink></li>
+                                <li onMouseOver={() => this.changeImage("wallets")}><StyledLink href='#'>portfele</StyledLink></li>
+                                <li onMouseOver={() => this.changeImage("bags")}><StyledLink href='#'>torby</StyledLink></li>
+                                <li onMouseOver={() => this.changeImage("pendands")}><StyledLink href='#'>breloki</StyledLink></li>
+                                <li onMouseOver={() => this.changeImage("notes")}><StyledLink href='#'>notesy</StyledLink></li>
+                                <li onMouseOver={() => this.changeImage("accessories")}><StyledLink href='#'>akcesoria</StyledLink></li>
                             </StyledListRight>
                         </Col>
                         <Col>
-                            <img src='https://hugbag.pl/assets/dist/img/categories/case.jpg' />
+                            <img src={img} />
                         </Col>
                     </Row>
                 </HighResContainer>
