@@ -8,7 +8,19 @@ import styled from 'styled-components';
 
 const SectionHeadline = styled.h1`
     font-size: 16px;
-    text-transform: uppercase;
+     position: relative;
+     text-transform: uppercase;
+     margin-left: 100px;
+ 
+     &:before {
+         position: absolute;
+         content: '';
+         width: 90px;
+         height: 5px;
+         background-color: #000000;
+         left: -100px;
+         bottom: 50%;
+     }
 `;
 
 const MainContainer = styled(Container)`
@@ -28,6 +40,18 @@ const StyledListRight = styled.ul`
     text-align: right;
 `;
 
+const HighResContainer = styled(Container)`
+    @media (max-width: 1140px) {
+        display: none;
+    }
+`;
+
+const LowResContainer = styled(Container)`
+    @media (min-width: 1140px) {
+        display: none;
+    }
+`;
+
 
 const StyledLink = styled.a`
     text-decoration: none;
@@ -36,6 +60,32 @@ const StyledLink = styled.a`
     &:hover {
         color: #FF80F2;
     }
+`;
+
+const CategoryCard = styled(Col)`
+     margin: 10px;
+     position: relative,
+`;
+
+const ProductSpan = styled.span`
+     background-color: rgba(0, 0, 0, 0.45);
+     position: absolute;
+     bottom: 0;
+     width: inherit;
+     height: 100px;
+     color: #ffffff;
+     text-align: center;
+     display: block;
+`;
+
+const StyledImg = styled.img`
+     width: inherit;
+     height: inherit;
+ `;
+
+const ProductCategory = styled.p`
+     font-size: 20px;
+     margin: 20px 0;
 `;
 
 const AboutContainer = styled.ul`
@@ -56,6 +106,14 @@ const AddressSection = styled.footer`
  text-align: center;
 `;
 
+const FooterLink = styled.h1`
+     font-size: 16px;
+     position: relative;
+     text-transform: uppercase;
+     margin-left: 10px;
+`;
+
+
 class Home extends React.Component {
     render() {
         return (
@@ -63,7 +121,7 @@ class Home extends React.Component {
             <Carousel/>
             <section>
                 <SectionHeadline>Produkty</SectionHeadline>
-                <Container>
+                <HighResContainer>
                     <Row>
                         <Col>
                             <StyledListRight>
@@ -79,7 +137,37 @@ class Home extends React.Component {
                             <img src='https://hugbag.pl/assets/dist/img/categories/case.jpg' />
                         </Col>
                     </Row>
-                </Container>
+                </HighResContainer>
+                <LowResContainer>
+                    <Row>
+                        <CategoryCard>
+                            <StyledImg src='https://hugbag.pl/assets/dist/img/categories/case.jpg'/>
+                            <ProductSpan><ProductCategory>Etui</ProductCategory></ProductSpan>
+                        </CategoryCard>
+                        <CategoryCard>
+                            <StyledImg src='https://hugbag.pl/assets/dist/img/categories/wallets.jpg'/>
+                            <ProductSpan><ProductCategory>Portfele</ProductCategory></ProductSpan>
+                        </CategoryCard>
+                        <CategoryCard>
+                            <StyledImg src='https://hugbag.pl/assets/dist/img/categories/bags.jpg'/>
+                            <ProductSpan><ProductCategory>Torby</ProductCategory></ProductSpan>
+                        </CategoryCard>
+                    </Row>
+                    <Row>
+                        <CategoryCard>
+                            <StyledImg src='https://hugbag.pl/assets/dist/img/categories/pendants.jpg'/>
+                            <ProductSpan><ProductCategory>Breloki</ProductCategory></ProductSpan>
+                        </CategoryCard>
+                        <CategoryCard>
+                            <StyledImg src='https://hugbag.pl/assets/dist/img/categories/notes.jpg'/>
+                            <ProductSpan><ProductCategory>Notes</ProductCategory></ProductSpan>
+                        </CategoryCard>
+                        <CategoryCard>
+                            <StyledImg src='https://hugbag.pl/assets/dist/img/categories/accessories.jpg'/>
+                            <ProductSpan><ProductCategory>Akcesoria</ProductCategory></ProductSpan>
+                        </CategoryCard>
+                    </Row>
+                </LowResContainer>
             </section>
             <section>
                 <div>
@@ -134,8 +222,8 @@ class Home extends React.Component {
                 <Container>
                     <Row>
                         <SectionHeadline>Regulamin</SectionHeadline>
-                        <h3>Instagram</h3>
-                        <h3>Facebook</h3>
+                        <FooterLink>Instagram</FooterLink>
+                        <FooterLink>Facebook</FooterLink>
                     </Row>
                 </Container>
             </footer>
