@@ -1,65 +1,71 @@
 // @ts-ignore
 
 import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
+import Carousel from '../Carousel/Carousel';
+import { Container, Row, Col } from 'react-grid-system';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import styled from 'styled-components';
 
-export default () => (
-    <Carousel autoPlay>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-1.jpg" />
-            <p className="legend">Legend 1</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-2.jpg" />
-            <p className="legend">Legend 2</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-3.jpg" />
-            <p className="legend">Legend 3</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-4.jpg" />
-            <p className="legend">Legend 4</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-5.jpg" />
-            <p className="legend">Legend 5</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-6.jpg" />
-            <p className="legend">Legend 6</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-7.jpg" />
-            <p className="legend">Legend 7</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-8.jpg" />
-            <p className="legend">Legend 8</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-9.jpg" />
-            <p className="legend">Legend 9</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-10.jpg" />
-            <p className="legend">Legend 10</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-11.jpg" />
-            <p className="legend">Legend 11</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-12.jpg" />
-            <p className="legend">Legend 12</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-13.jpg" />
-            <p className="legend">Legend 13</p>
-        </div>
-        <div>
-            <img alt="" src="http://lorempixel.com/output/cats-q-c-640-480-14.jpg" />
-            <p className="legend">Legend 14</p>
-        </div>
-    </Carousel>
-);
+const SectionHeadline = styled.h1`
+    font-size: 16px;
+    text-transform: uppercase;
+`;
+
+const MainContainer = styled(Container)`
+    margin: 0 auto;
+    max-width: 1140px;
+    align-items: center;
+    padding: 0 15px;
+`;
+
+const StyledListRight = styled.ul`
+    list-style-type: none;
+    font-size: 32px;
+    font-weight: 700;
+    position: absolute;
+    right: 70px;
+    top: 160px;
+    text-align: right;
+`;
+
+
+const StyledLink = styled.a`
+    text-decoration: none;
+    color: #000000;
+    
+    &:hover {
+        color: #FF80F2;
+    }
+`;
+
+class Home extends React.Component {
+    render() {
+        return (
+            <MainContainer>
+            <Carousel/>
+            <section>
+                <SectionHeadline>Produkty</SectionHeadline>
+                <Container>
+                    <Row>
+                        <Col>
+                            <StyledListRight>
+                                <li><StyledLink href='#'>etui</StyledLink></li>
+                                <li><StyledLink href='#'>portfele</StyledLink></li>
+                                <li><StyledLink href='#'>torby</StyledLink></li>
+                                <li><StyledLink href='#'>breloki</StyledLink></li>
+                                <li><StyledLink href='#'>notesy</StyledLink></li>
+                                <li><StyledLink href='#'>akcesoria</StyledLink></li>
+                            </StyledListRight>
+                        </Col>
+                        <Col>
+                            <img src='https://hugbag.pl/assets/dist/img/categories/case.jpg' />
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+        </MainContainer>
+        )
+    }
+}
+
+export default Home;
