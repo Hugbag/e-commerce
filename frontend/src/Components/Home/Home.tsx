@@ -38,6 +38,21 @@ const StyledLink = styled.a`
     }
 `;
 
+const AboutContainer = styled.ul`
+    position: relative;
+    max-width: 768px;
+`;
+
+const StyledListLeft = styled.ul`
+     list-style-type: none;
+     font-size: 32px;
+     font-weight: 700;
+     position: absolute;
+     left: -70px;
+     top: 160px;
+`;
+
+
 class Home extends React.Component {
     render() {
         return (
@@ -63,6 +78,20 @@ class Home extends React.Component {
                     </Row>
                 </Container>
             </section>
+                <section>
+                    <div>
+                        <div/>
+                        <SectionHeadline>O Hugbag</SectionHeadline>
+                    </div>
+                    <AboutContainer>
+                        <img src='https://hugbag.pl/assets/dist/img/homepage/about.jpg'/>
+                        <StyledListLeft>
+                            <li>przedmiot osobisty</li>
+                            <li>skora</li>
+                            <li>detale</li>
+                        </StyledListLeft>
+                    </AboutContainer>
+                </section>
         </MainContainer>
         )
     }
