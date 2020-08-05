@@ -52,6 +52,9 @@ const StyledListLeft = styled.ul`
      top: 160px;
 `;
 
+const AddressSection = styled.footer`
+ text-align: center;
+`;
 
 class Home extends React.Component {
     render() {
@@ -78,32 +81,64 @@ class Home extends React.Component {
                     </Row>
                 </Container>
             </section>
-                <section>
-                    <div>
-                        <div/>
-                        <SectionHeadline>O Hugbag</SectionHeadline>
-                    </div>
-                    <AboutContainer>
-                        <img src='https://hugbag.pl/assets/dist/img/homepage/about.jpg'/>
-                        <StyledListLeft>
-                            <li>przedmiot osobisty</li>
-                            <li>skora</li>
-                            <li>detale</li>
-                        </StyledListLeft>
-                    </AboutContainer>
-                </section>
-                <section>
+            <section>
+                <div>
                     <div/>
-                    <SectionHeadline>Dla biznesu</SectionHeadline>
-                    <AboutContainer>
-                        <img src='https://hugbag.pl/assets/dist/img/homepage/2b.jpg'/>
-                        <StyledListLeft>
-                            <li>dlaczego HUGBAG?</li>
-                            <li>personalizacja</li>
-                            <li>zaufali nam</li>
-                        </StyledListLeft>
-                    </AboutContainer>
-                </section>
+                    <SectionHeadline>O Hugbag</SectionHeadline>
+                </div>
+                <AboutContainer>
+                    <img src='https://hugbag.pl/assets/dist/img/homepage/about.jpg'/>
+                    <StyledListLeft>
+                        <li>przedmiot osobisty</li>
+                        <li>skora</li>
+                        <li>detale</li>
+                    </StyledListLeft>
+                </AboutContainer>
+            </section>
+            <section>
+                <div/>
+                <SectionHeadline>Dla biznesu</SectionHeadline>
+                <AboutContainer>
+                    <img src='https://hugbag.pl/assets/dist/img/homepage/2b.jpg'/>
+                    <StyledListLeft>
+                        <li>dlaczego HUGBAG?</li>
+                        <li>personalizacja</li>
+                        <li>zaufali nam</li>
+                    </StyledListLeft>
+                </AboutContainer>
+            </section>
+            <section>
+                <div />
+                <SectionHeadline>Kontakt</SectionHeadline>
+                <Container>
+                    <Row>
+                        <AddressSection>
+                            <img src='https://hugbag.pl/assets/dist/img/logo.svg'/>
+                            <p>A. Ostrowskiego 30/127 53-238 Wrocław</p>
+                            <p>e-mail: biuro@hugbag.pl</p>
+                            <p>Znajdź nas na: Facebook, Instagram</p>
+                        </AddressSection>
+                        <Col>
+                            <p>Masz pytania? Pisz śmiało! Odpowiadamy niemalże natychmiast.</p>
+                            <form>
+                                <input type='text' placeholder='Twoje imie'></input>
+                                <input type='email' placeholder='Twoj email'></input>
+                                <input type='text' placeholder='Tresc wiadomosci'></input>
+                            </form>
+                            <button>Wyslij do nas wiadomosc</button>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+            <footer>
+                <Container>
+                    <Row>
+                        <SectionHeadline>Regulamin</SectionHeadline>
+                        <h3>Instagram</h3>
+                        <h3>Facebook</h3>
+                    </Row>
+                </Container>
+            </footer>
         </MainContainer>
         )
     }
