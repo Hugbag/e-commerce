@@ -135,6 +135,9 @@ class Home extends React.Component {
         showPersonal: true,
         showLeather: true,
         showDetails: true,
+        showWhy: true,
+        showCustom: true,
+        showTrustedBy: true,
     };
 
     changeImage(name) {
@@ -171,10 +174,19 @@ class Home extends React.Component {
             case "details":
                 this.setState({showDetails: !this.state.showDetails, showPersonal: true, showLeather: true, });
                 break;
+            case "why":
+                this.setState({showWhy: !this.state.showWhy, showCustom: true, showTrustedBy: true, });
+                break;
+            case "custom":
+                this.setState({showCustom: !this.state.showCustom, showWhy: true, showTrustedBy: true, });
+                break;
+            case "trusted-by":
+                this.setState({showTrustedBy: !this.state.showTrustedBy, showWhy: true, showCustom: true, });
+                break;
         }
     }
     render() {
-        const { img, showPersonal, showLeather, showDetails } = this.state;
+        const { img, showPersonal, showLeather, showDetails, showWhy, showCustom, showTrustedBy } = this.state;
 
         return (
             <MainContainer>
@@ -310,10 +322,71 @@ class Home extends React.Component {
                 <AboutContainer>
                     <img src='https://hugbag.pl/assets/dist/img/homepage/2b.jpg'/>
                     <StyledListLeft>
-                        <li>dlaczego HUGBAG?</li>
-                        <li>personalizacja</li>
-                        <li>zaufali nam</li>
+                        <li onClick={() => this.toggleContent("why")}>dlaczego HUGBAG?</li>
+                        <li onClick={() => this.toggleContent("custom")}>personalizacja</li>
+                        <li onClick={() => this.toggleContent("trusted-by")}>zaufali nam</li>
                     </StyledListLeft>
+                    <Content hidden={showWhy} >
+                        <p>Dlaczego HUGBAG sprawdza się w biznesie? Przedmioty firmowe to nie tylko miły gest wobec klientów czy współpracowników, ale bardzo konkretne narzędzie marketingowe, które ma przynieść określone efekty. Jaki przedmiot sprawdzi się w tej roli najlepiej?</p>
+                        <p>Wysokiej jakości, solidny ponieważ wrażenie, jakie robi jest przenoszone na firmę, która go podarowała, a któż nie chciałby być tak dobrze oceniony? Wytrzymały ponieważ każda firma chciałaby, by przedmiot z jej logo służył obdarowanemu jak najdłużej. Funkcjonalny ponieważ wtedy cieszy nie tylko oczy. Piękny ponieważ ludzie lubią otaczać się rzeczami pięknymi, a klienci, kontrahenci, współpracownicy i własna załoga nie są tutaj wyjątkiem. Z potencjałem, by stać się przedmiotem osobistym ponieważ ten pułap osiągają tylko najbardziej trafione upominki.</p>
+                        <p>HUGBAG taki właśnie jest. Mówimy to bez fałszywej skromności. Tworzymy produkty, których sami z przyjemnością używamy. Proszę sobie wyobrazić swoje logo na przedmiocie używanym często, z przyjemnością, przez lata… Brzmi jak marzenie każdego specjalisty od marketingu. Lubimy spełniać marzenia naszych Klientów. Zapraszamy do kontaktu.</p>
+                    </Content>
+                    <Content hidden={showCustom} >
+                        <h3>Kolorystyka</h3>
+                        <p>HUGBAG wygląda ciekawie w każdym kolorze, lecz w biznesie klasyka prezentuje się zdecydowanie najlepiej. Brązy, beże czy czerń pasują do każdego stylu i współgrają z każdą kolorystyką firmową. Naturalne odcienie powinny też zadowolić gusta kontrahentów i pracowników, a to znacząco zwiększa prawdopodobieństwo, że polubią oni podarowanego im firmowego HUGBAGa. Na życzenie Klientów szyjemy również ze skór w odcieniach mniej typowych, za to możliwie najbardziej spójnych z identyfikacją wizualną ich firm. Choć jednak bardzo tego żałujemy, w przypadku skór naturalnych paleta dostępnych kolorów jest ograniczona. Może więc jednak elegancka, ponadczasowa czerń…?</p>
+                        <h3>Cena</h3>
+                        <p>HUGBAG to autorska manufaktura. Przedmioty wykonujemy osobiście, na zamówienie i według potrzeb Klienta. Z tego powodu tylko niewielkie ilości produktów dostępne są od ręki. Na ostateczną wartość zamówienia składa się szereg czynników: wielkość zamówienia, wybrany rodzaj skóry i wykończenia, kolorystyka produktu, zakres jego personalizacji oraz skomplikowanie i rozmiar znakowania. Często spełniamy życzenia specjalne, realizujemy zamówienia nietypowe i podejmujemy się usług dodatkowych. Dlatego wycenę przygotowujemy indywidualnie dla każdego Klienta. W tej sprawie prosimy o kontakt mailowy lub telefoniczny. Szybko odpowiadamy.</p>
+                        <h3>Opcje znakowania</h3>
+                        <p>Znakujemy metodą wycisku, z użyciem specjalnej matrycy, przygotowywanej dla konkretnego Klienta. Na każdym HUGBAGu możemy wykonać inne znakowanie, w tym personalizację imienną. Logo do znakowania należy przesłać do nas w formie elektronicznej. Przyjmujemy pliki w formatach: cdr, ai, eps, pdf, przy czym wszystkie elementy graficzne oraz fonty w pliku powinny zostać zapisane jako grafika wektorowa. Maksymalny wymiar pola znakowania wynosi 75 x 75 mm.</p>
+                        <h3>Minimalna wielkość zamówienia</h3>
+                        <p>Realizacja zamówienia jest możliwa już od jednej sztuki. Niektóre rodzaje skór, szczególnie w nietypowych odcieniach, sprowadzamy indywidualnie dla danego Klienta. W takich sytuacjach może istnieć konieczność zamówienia w garbarni minimalnej ilości surowca.</p>
+                        <h3>Czas realizacji zamówienia</h3>
+                        <p>Nasze realizacje uwzględniają indywidualne potrzeby Klientów. Z tego powodu tylko niewielkie ilości produktów są dostępne od ręki. Czas realizacji ustalamy odrębnie dla każdego zamówienia. Zależy on przede wszystkim od wybranego rodzaju skóry (niektóre skóry są dostępne od ręki, inne sprowadzamy specjalnie dla Klienta), preferowanego rodzaju wykończenia oraz ilości sztuk. Bez względu na wielkość zamówienia, rodzaj użytej skóry i sezon – maksymalny czas realizacji wynosi 30 dni roboczych, od przyjęcia zlecenia, do momentu dostarczenia gotowych produktów do Klienta. Zapewniamy jednak, że choć na HUGBAGa warto poczekać, to zwykle nie trzeba aż tak długo.</p>
+                        <h3>Zamówienia indywidualne</h3>
+                        <p>Nie lubimy mówić, że „się nie da”. Tworzymy na miarę potrzeb naszych Klientów. Większe, mniejsze, z kolorowym szwem lub całe w innym kolorze, z innym zapięciem, z dodatkowym paskiem lub dziurką. Możemy stworzyć nawet coś całkiem nowego, innego niż to, co mamy w ofercie. U nas „da się” bardzo wiele. Zapraszamy do kontaktu.</p>
+                    </Content>
+                    <Content hidden={showTrustedBy} >
+                        <h3>Adrenaline Addicts</h3>
+                        <a href='adrenalineaddicts.eu'>adrenalineaddicts.eu</a>
+                        <h3>ALARO</h3>
+                        <a href='www.alaro.pl'>www.alaro.pl</a>
+                        <h3>AMC Polska</h3>
+                        <a href='www.amctv.pl'>www.amctv.pl</a>
+                        <h3>ATM Grupa</h3>
+                        <a href='www.atmgrupa.pl'>www.atmgrupa.pl</a>
+                        <h3>Bieszczadzkie Drezyny Rowerowe</h3>
+                        <a href='drezynyrowerowe.pl'>drezynyrowerowe.pl</a>
+                        <h3>Buck Studio</h3>
+                        <a href='www.buck.pl'>www.buck.pl</a>
+                        <h3>CAMPO</h3>
+                        <a href='campomoderngrill.pl'>campomoderngrill.pl</a>
+                        <h3>DMC Poland</h3>
+                        <a href='dmcpoland.com'>dmcpoland.com</a>
+                        <h3>Double Brand</h3>
+                        <a href='doubledesign.pl'>doubledesign.pl</a>
+                        <h3>Gerresheimer</h3>
+                        <a href='www.gerresheimer.com'>www.gerresheimer.com</a>
+                        <h3>Kompania Piwowarska</h3>
+                        <a href='www.kp.pl'>'www.kp.pl</a>
+                        <h3>Legnicka Specjalna Strefa Ekonomiczna</h3>
+                        <a href='lsse.eu'>lsse.eu</a>
+                        <h3>Urząd Marszałkowski Województwa Dolnośląskiego</h3>
+                        <a href='www.umwd.dolnyslask.pl'>www.umwd.dolnyslask.pl</a>
+                        <h3>Opera</h3>
+                        <a href='www.opera.wroclaw.pl'>www.opera.wroclaw.pl</a>
+                        <h3>PURO</h3>
+                        <a href='purohotel.pl'>purohotel.pl</a>
+                        <h3>Titot</h3>
+                        <a href='titot.pl'>titot.pl</a>
+                        <h3>Titot</h3>
+                        <a href='titot.pl'>titot.pl</a>
+                        <h3>WATAHA</h3>
+                        <a href='www.hbo.pl/wataha'>www.hbo.pl/wataha</a>
+                        <h3>Węglohut</h3>
+                        <a href='www.weglohut.pl/firma.html'>www.weglohut.pl/firma.html</a>
+                        <h3>Zamek Topacz</h3>
+                        <a href='www.zamektopacz.pl'>www.zamektopacz.pl</a>
+                    </Content>
                 </AboutContainer>
             </section>
             <section>
