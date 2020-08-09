@@ -1,7 +1,4 @@
-// @ts-ignore
-
 import React from 'react';
-import PropTypes from 'prop-types';
 import Carousel from '../Carousel/Carousel';
 import { Container, Row, Col } from 'react-grid-system';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -120,17 +117,21 @@ const FooterLink = styled.h1`
      margin-left: 10px;
 `;
 
+type HomeProps = {
+    hidden?: boolean;
+};
+type HomeState = {
+    img: string,
+    showPersonal: boolean,
+    showLeather: boolean,
+    showDetails: boolean,
+    showWhy: boolean,
+    showCustom: boolean,
+    showTrustedBy: boolean,
+};
 
-class Home extends React.Component {
-    static propTypes = {
-        hidden: PropTypes.bool,
-    };
-
-    static defaultProps = {
-        hidden: true,
-    };
-
-    state = {
+class Home extends React.Component <HomeProps, HomeState> {
+    state: HomeState = {
         img: 'https://hugbag.pl/assets/dist/img/categories/case.jpg',
         showPersonal: true,
         showLeather: true,
@@ -140,7 +141,7 @@ class Home extends React.Component {
         showTrustedBy: true,
     };
 
-    changeImage(name) {
+    changeImage = (name: string) => {
         switch (name) {
             case "wallets":
                 this.setState({ img: 'https://hugbag.pl/assets/dist/img/categories/wallets.jpg', });
@@ -160,11 +161,10 @@ class Home extends React.Component {
             default:
                 this.setState({ img: 'https://hugbag.pl/assets/dist/img/categories/case.jpg', });
         }
-    }
+    };
 
-    toggleContent(showInfo) {
-        console.log("LOL");
-        switch (showInfo) {
+    toggleContent = (info: string) => {
+        switch (info) {
             case "personal":
                 this.setState({showPersonal: !this.state.showPersonal, showLeather: true, showDetails: true, });
                 break;
@@ -184,7 +184,8 @@ class Home extends React.Component {
                 this.setState({showTrustedBy: !this.state.showTrustedBy, showWhy: true, showCustom: true, });
                 break;
         }
-    }
+    };
+
     render() {
         const { img, showPersonal, showLeather, showDetails, showWhy, showCustom, showTrustedBy } = this.state;
 
@@ -390,16 +391,17 @@ class Home extends React.Component {
                 </AboutContainer>
             </section>
             <section>
-                <div />
                 <SectionHeadline>Kontakt</SectionHeadline>
                 <AboutContainer>
                     <Row>
+                        <Col>
                         <AddressSection>
-                            <img src='https://hugbag.pl/assets/dist/img/logo.svg'/>
+                            <img src='' />
                             <p>A. Ostrowskiego 30/127 53-238 Wrocław</p>
                             <p>e-mail: biuro@hugbag.pl</p>
                             <p>Znajdź nas na: Facebook, Instagram</p>
                         </AddressSection>
+                        </Col>
                         <Col>
                             <p>Masz pytania? Pisz śmiało! Odpowiadamy niemalże natychmiast.</p>
                             <form>
