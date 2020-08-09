@@ -3,12 +3,18 @@ import Carousel from '../Carousel/Carousel';
 import { Container, Row, Col } from 'react-grid-system';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styled from 'styled-components';
+import logo from './logo.svg';
 
-const SectionHeadline = styled.h1`
-    font-size: 16px;
+const StyledSection = styled.section`
+     margin: 30px 0;
+`;
+
+const SectionHeadline = styled.h3`
+     font-size: 16px;
      position: relative;
      text-transform: uppercase;
-     margin-left: 100px;
+     margin: 10px 0 10px 100px;
+     font-weight: normal;
  
      &:before {
          position: absolute;
@@ -110,11 +116,38 @@ const AddressSection = styled.footer`
  text-align: center;
 `;
 
-const FooterLink = styled.h1`
+const StyledInput = styled.input`
+    font-size: 13px;
+    display: block;
+    width: 100%;
+    border: 1px solid #EBEBEB;
+    padding: 7px;
+    border-radius: 1px;
+    margin: 10px 0;
+    
+    &:active {
+        border: 1px solid #red;
+    }
+`;
+
+const StyledButton= styled.button`
+    color: #ffffff;
+    background-color: #000000;
+    float: right;
+    font-size: 13px;
+    cursor: pointer;
+    padding: .5rem 1rem;
+    border: 1px solid transparent;
+`;
+
+const FooterLink = styled.a`
      font-size: 16px;
-     position: relative;
      text-transform: uppercase;
      margin-left: 10px;
+     text-decoration: none;
+     color: #000000;
+     margin: 10px 20px;
+     font-weight: normal;
 `;
 
 type HomeProps = {
@@ -192,7 +225,7 @@ class Home extends React.Component <HomeProps, HomeState> {
         return (
             <MainContainer>
             <Carousel/>
-            <section>
+            <StyledSection>
                 <SectionHeadline>Produkty</SectionHeadline>
                 <HighResContainer>
                     <Row>
@@ -241,8 +274,8 @@ class Home extends React.Component <HomeProps, HomeState> {
                         </CategoryCard>
                     </Row>
                 </LowResContainer>
-            </section>
-            <section>
+            </StyledSection>
+            <StyledSection>
                 <div>
                     <div/>
                     <SectionHeadline>O Hugbag</SectionHeadline>
@@ -316,8 +349,8 @@ class Home extends React.Component <HomeProps, HomeState> {
                         </p>
                     </Content>
                 </AboutContainer>
-            </section>
-            <section>
+            </StyledSection>
+            <StyledSection>
                 <div/>
                 <SectionHeadline>Dla biznesu</SectionHeadline>
                 <AboutContainer>
@@ -389,14 +422,14 @@ class Home extends React.Component <HomeProps, HomeState> {
                         <a href='www.zamektopacz.pl'>www.zamektopacz.pl</a>
                     </Content>
                 </AboutContainer>
-            </section>
-            <section>
+            </StyledSection>
+            <StyledSection>
                 <SectionHeadline>Kontakt</SectionHeadline>
-                <AboutContainer>
+                <Container>
                     <Row>
                         <Col>
                         <AddressSection>
-                            <img src='' />
+                            <img src={logo} />
                             <p>A. Ostrowskiego 30/127 53-238 Wrocław</p>
                             <p>e-mail: biuro@hugbag.pl</p>
                             <p>Znajdź nas na: Facebook, Instagram</p>
@@ -405,21 +438,21 @@ class Home extends React.Component <HomeProps, HomeState> {
                         <Col>
                             <p>Masz pytania? Pisz śmiało! Odpowiadamy niemalże natychmiast.</p>
                             <form>
-                                <input type='text' placeholder='Twoje imie'></input>
-                                <input type='email' placeholder='Twoj email'></input>
-                                <input type='text' placeholder='Tresc wiadomosci'></input>
+                                <StyledInput type='text' placeholder='Twoje imie'></StyledInput>
+                                <StyledInput type='email' placeholder='Twoj email'></StyledInput>
+                                <StyledInput type='text' placeholder='Tresc wiadomosci'></StyledInput>
                             </form>
-                            <button>Wyslij do nas wiadomosc</button>
+                            <StyledButton>Wyslij do nas wiadomosc</StyledButton>
                         </Col>
                     </Row>
-                </AboutContainer>
-            </section>
+                </Container>
+            </StyledSection>
             <footer>
                 <Container>
                     <Row>
                         <SectionHeadline>Regulamin</SectionHeadline>
-                        <FooterLink>Instagram</FooterLink>
-                        <FooterLink>Facebook</FooterLink>
+                        <FooterLink href='http://www.instagram.com/hugbag' target='_blank'>Instagram</FooterLink>
+                        <FooterLink href='http://www.facebook.com/hugbag' target='_blank'>Facebook</FooterLink>
                     </Row>
                 </Container>
             </footer>
